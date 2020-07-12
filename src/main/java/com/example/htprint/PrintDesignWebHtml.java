@@ -6,6 +6,8 @@ import java.util.function.Consumer;
 
 import sun.rmi.runtime.Log;
 
+import static com.example.htprint.BillPrint.BillImage;
+
 public class PrintDesignWebHtml extends PrintDesign {
     String[] data_cont;
     String[] data_Comp;
@@ -137,6 +139,7 @@ public class PrintDesignWebHtml extends PrintDesign {
                 "\n" + data +
                 underScoreMaker() +
 //                printWebBreak() +
+                printNetamount("1000") +
                 printkotnoBottom("304") +
 //                printLineHtml() +
                 "</body>\n" +
@@ -160,9 +163,9 @@ public class PrintDesignWebHtml extends PrintDesign {
     int IMAGE1 = 9;
 
     public String CompanyHead(String[] data) {
-        return "<center><img src=\'" + data[0] + "'\"/><center>\n" +
-                "<center><img src=\'" + data[1] + "'\"/><center>\n" +
-                "<center><h2 style=\"margin:0px;\">" + data[2] + "</h2></center>\n" +
+        return "<center><img src=\'" + BillImage(data[IMAGE1_0]) + "'\"/><center>\n" +
+                "<center><img src=\'" + BillImage(data[IMAGE2_1]) + "'\"/><center>\n" +
+                "<center><h2 style=\"margin:0px;\">" + data[COMPANY_2] + "</h2></center>\n" +
                 "<center ><p style=\"font-size: 15px;margin:0px;\">" + data[COMPANYPLACE_3] + "</p></center>\n" +
                 "<center><p style=\"font-size: 15px;margin:0px;\">" + data[COMPANYROAD_4] + "</p></center>\n" +
                 "<center><p style=\"font-size: 15px;margin:0px;\">" + data[COMPANYPLACEPIN_5] + "</h5></center>\n" +
@@ -177,6 +180,12 @@ public class PrintDesignWebHtml extends PrintDesign {
 //                "<p style=\"text-align:left;font-size: 15px;\">" + data[TIME_3] + "</p>\n" +
                 "<p style=\"text-align:left;font-size: 12px;\">" + data[HEAD_DATE_2] + "</p>";
     }
+//    public String CompanyHead_content(String[] data) {
+//        return "<p style=\"text-align:left;font-size: 15px;\">" + data[HEAD_BILLNO_0] + "</p>\n" +
+//                "<p style=\"text-align:left;font-size: 15px;\">" + data[HEAD_CASHBILL_1] + "</p>\n" +
+////                "<p style=\"text-align:left;font-size: 15px;\">" + data[TIME_3] + "</p>\n" +
+//                "<p style=\"text-align:left;font-size: 12px;\">" + data[HEAD_DATE_2] + "</p>";
+//    }
 
     public String printTh(String data) {
         return "<th>" + data + " </th>";
@@ -221,7 +230,7 @@ public class PrintDesignWebHtml extends PrintDesign {
     public String printLeftdiv(String data, String data2, int length) {
         String value = "border-top: 4px dotted blue;";
         String s = "NetAmount:";
-        return "<div style=\"text-align:left;font-size: 12px;\">" + data + printLeftp(data2, length*3) + "</div>";
+        return "<div style=\"text-align:left;font-size: 12px;\">" + data + printLeftp(data2, length * 3) + "</div>";
     }
 
     public String printLeftp(String data2, int length) {
