@@ -136,7 +136,7 @@ public class PrintDesignWebHtml extends PrintDesign {
                 CompanyHead_content(data_Comp) +
                 "\n" + data +
                 underScoreMaker() +
-                printWebBreak() +
+//                printWebBreak() +
                 printkotnoBottom("304") +
 //                printLineHtml() +
                 "</body>\n" +
@@ -197,7 +197,7 @@ public class PrintDesignWebHtml extends PrintDesign {
 
     public String underScoreMakerHtmlcenter() {
         String underscore = "------------------------------------------------------------------------------------------------";
-        return "<center>" + underscore.substring(1, 30) + "</center>";
+        return "<center>" + underscore.substring(1, 28) + "</center>";
 
 
     }
