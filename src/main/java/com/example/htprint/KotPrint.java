@@ -55,7 +55,7 @@ public class KotPrint extends PrintDesignWebHtml {
                 "margin-top: 0px;\n" +
                 "margin-bottom: 0px;\n" +
                 "}\n" +
-                "table th{ border-bottom: 1px solid #000;border-top:1px solid #000 }" +
+                "table th{ border-bottom: 1px solid #000;border-top:1px solid #000;width:100% }" +
                 "td,tr{\n" +
                 "    font-size: small;\n" +
                 "}" +
