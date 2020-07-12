@@ -1,10 +1,26 @@
 package com.example.htprint;
 
 
+import java.util.HashMap;
+import java.util.List;
+
 public class KotPrint extends PrintDesignWebHtml {
-    public KotPrint(PrinterType printerType) {
+    public KotPrint(PrinterType printerType, List<Productmodel> productmodelList, HashMap<Integer, String> map) {
         super(printerType);
+        mData = new String[8];
+        this.productmodelList = productmodelList;
+        mData[Constants.HEAD_BILLNO_0] = map.get(HEAD_BILLNO_0);
+        mData[Constants.HEAD_DATE_2] = map.get(Constants.HEAD_DATE_2);
+        mData[TIME_3] = map.get(Constants.TIME_3);
+        mData[Constants.WAITER_4] = map.get(Constants.WAITER_4);
+        mData[Constants.TABLE_5] = map.get(Constants.TABLE_5);
+        mData[Constants.IMAGE_6] = map.get(Constants.IMAGE_6);
+        mData[Constants.KOTNO_7] = map.get(Constants.KOTNO_7);
+
     }
+
+    String[] mData;
+    List<Productmodel> productmodelList;
 
     public String KotPrint() {
         return printHtmlKot(printTable());
@@ -14,25 +30,22 @@ public class KotPrint extends PrintDesignWebHtml {
         return printHtmlCenter(printtable(HeadColumndataWebHead(new String[]{"Item", "Qty"}) + generateFromdataWeKot(Main.generateproduct())));
     }
 
-    public String KotImage() {
-        return "<center><img  width=\"100\" height=\"100\" src='file:///android_res/drawable/parcel.png'/><center>";
+    public String KotImage(String image) {
+        if (image.isEmpty())
+            return "";
+        else
+            return "<center><img  width=\"100\" height=\"100\" src='file:///android_res/drawable/parcel.png'/><center>";
     }
 
-    int HEAD_BILLNO_0 = 0;
-    int HEAD_CASHBILL_1 = 1;
-    int HEAD_DATE_2 = 2;
-    int TIME_3 = 3;
-    int WAITER_4 = 4;
-    int TABLE_5 = 5;
 
     public String Headdescription(String[] data) {
-        String Billno = "BillNO:226"; //10
+        String Billno = "BillNO:" + data[Constants.HEAD_BILLNO_0]; //10
         String cashbil = "CashBill"; //8
-        String date = "Date:06/07/20"; //13
-        String time = "12:17:45 PM"; //11
-        String waiter = " W:MOHAMMED HASIF"; //16
-        String table = "Table : A4";//10
-        return KotImage() + printLeft(Billno) + printLeft(cashbil + spaceMakerWeb(48 - (cashbil.length() + date.length())) + date) + printLeft(time) + printLeft(waiter) + printLeft(table);
+        String date = "Date:" + data[Constants.HEAD_DATE_2]; //13
+        String time = "" + data[Constants.TIME_3]; //11
+        String waiter = "W:" + data[Constants.WAITER_4]; //16
+        String table = "Table :" + data[Constants.TABLE_5];//10
+        return KotImage(data[Constants.IMAGE_6]) + printLeft(Billno + spaceMakerWeb(48 - (cashbil.length() + Billno.length())) + cashbil) + printLeft(date + spaceMakerWeb(48 - (date.length() + time.length())) + time) + printLeft(waiter) + printLeft(table);
     }
 
     @Override
@@ -78,7 +91,7 @@ public class KotPrint extends PrintDesignWebHtml {
                 "</style>\n" +
                 "</head>\n" +
                 "<body>\n" +
-                Headdescription(new String[]{}) +
+                Headdescription(mData) +
 //                printLineHtml() +
 //                CompanyHead_content(data_Comp) +
                 "\n" + data +
@@ -86,7 +99,7 @@ public class KotPrint extends PrintDesignWebHtml {
                 underScoreMakerHtmlcenter() +
 //                printNetamount("100000.00") +
                 printWebBreak() +
-                printkotnoBottom("304") +
+                printkotnoBottom(mData[Constants.KOTNO_7]) +
 //                printLineHtml() +
                 "</body>\n" +
                 "</html>";

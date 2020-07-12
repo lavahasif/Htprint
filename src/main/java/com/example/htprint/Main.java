@@ -1,6 +1,7 @@
 package com.example.htprint;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main {
@@ -98,7 +99,15 @@ public class Main {
         PrintDesignWebHtml printDesign = new PrintDesignWebHtml(PrinterType._48Char);
 
 
-        builder.append(new KotPrint(PrinterType._48Char).KotPrint());
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(Constants.HEAD_BILLNO_0, "100");
+        map.put(Constants.HEAD_DATE_2, "12/jul/20");
+        map.put(Constants.TIME_3, "10:20:25:PM");
+        map.put(Constants.WAITER_4, "AKBER");
+        map.put(Constants.TABLE_5, "A4");
+        map.put(Constants.IMAGE_6, "");
+        map.put(Constants.KOTNO_7, "150");
+        builder.append(new KotPrint(PrinterType._48Char, Main.generateproduct(), map).KotPrint());
 
 
         System.out.println(builder.toString());
