@@ -27,7 +27,7 @@ public class KotPrint extends PrintDesignWebHtml {
     }
 
     public String printTable() {
-        return printHtmlCenter(printtable(HeadColumndataWebHead(new String[]{"Item", "Qty"}) + generateFromdataWeKot(Main.generateproduct())));
+        return printHtmlCenter(printtable(HeadColumndataWebHead(new String[]{"Item", "Qty"}) + generateFromdataWeKot(productmodelList)));
     }
 
     public String KotImage(String image) {
