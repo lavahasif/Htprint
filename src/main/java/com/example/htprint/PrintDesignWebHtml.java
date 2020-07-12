@@ -186,6 +186,10 @@ public class PrintDesignWebHtml extends PrintDesign {
         return "<th style=\"text-align:right;\">" + data + " </th>";
     }
 
+    public String printThWleft(String data) {
+        return "<th style=\"text-align:left;\">" + data + " </th>";
+    }
+
     public String printtr(String data) {
         return "<tr>" + data + "</tr>";
     }
@@ -212,6 +216,18 @@ public class PrintDesignWebHtml extends PrintDesign {
         String value = "border-top: 4px dotted blue;";
         String s = "NetAmount:";
         return "<p style=\"text-align:left;font-size: 12px;\">" + data + "</p>";
+    }
+
+    public String printLeftdiv(String data, String data2, int length) {
+        String value = "border-top: 4px dotted blue;";
+        String s = "NetAmount:";
+        return "<div style=\"text-align:left;font-size: 12px;\">" + data + printLeftp(data2, length) + "</div>";
+    }
+
+    public String printLeftp(String data2, int length) {
+        String value = "border-top: 4px dotted blue;";
+        String s = "NetAmount:";
+        return "<p style='display:inline;margin-left:" + length + "px'>" + data2 + "</p>";
     }
 
     public String printkotnoBottom(String data) {
@@ -247,7 +263,7 @@ public class PrintDesignWebHtml extends PrintDesign {
             return printtr(printTh(heads[0]) + printThWright(heads[1]) + printThWright(heads[2]) + printThWright(heads[3]));
         } else if (PrinterHead._3Head.name == heads.length) {
         } else if (PrinterHead._2Head.name == heads.length) {
-            return printtr(printTh(heads[0]) + printThWright(heads[1]));
+            return printtr(printThWleft(heads[0]) + printThWright(heads[1]));
         } else {
         }
 

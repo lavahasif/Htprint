@@ -45,7 +45,7 @@ public class KotPrint extends PrintDesignWebHtml {
         String time = "" + data[Constants.TIME_3]; //11
         String waiter = "W:" + data[Constants.WAITER_4]; //16
         String table = "Table :" + data[Constants.TABLE_5];//10
-        return KotImage(data[Constants.IMAGE_6]) + printLeft(Billno + spaceMakerWeb(48 - (cashbil.length() + Billno.length())) + cashbil) + printLeft(date + spaceMakerWeb(48 - (date.length() + time.length())) + time) + printLeft(waiter) + printLeft(table);
+        return KotImage(data[Constants.IMAGE_6]) + printLeft(Billno) + printLeftdiv(date, time, (48 - (date.length() + time.length()))) + printLeft(waiter) + printLeft(table);
     }
 
     @Override
