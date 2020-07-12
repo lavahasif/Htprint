@@ -8,6 +8,10 @@ public class Main {
     static StringBuilder builder;
 
     public static void main(String[] args) {
+        SampleKots();
+    }
+
+    public static String SampleKots() {
         HashMap<Integer, String> map = new HashMap<>();
         map.put(Constants.HEAD_BILLNO_0, "100");
         map.put(Constants.HEAD_DATE_2, "12/jul/20");
@@ -16,7 +20,7 @@ public class Main {
         map.put(Constants.TABLE_5, "A4");
         map.put(Constants.IMAGE_6, "");
         map.put(Constants.KOTNO_7, "150");
-        sampleKot(map, generateproduct());
+      return  sampleKot(map, generateproduct());
     }
 
     public static String sampleReceipt() {

@@ -221,7 +221,7 @@ public class PrintDesignWebHtml extends PrintDesign {
     public String printLeftdiv(String data, String data2, int length) {
         String value = "border-top: 4px dotted blue;";
         String s = "NetAmount:";
-        return "<div style=\"text-align:left;font-size: 12px;\">" + data + printLeftp(data2, length) + "</div>";
+        return "<div style=\"text-align:left;font-size: 12px;\">" + data + printLeftp(data2, length*3) + "</div>";
     }
 
     public String printLeftp(String data2, int length) {
