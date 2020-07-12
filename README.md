@@ -1,4 +1,5 @@
 # Htprint
+[![](https://jitpack.io/v/lavahasif/Htprint.svg)](https://jitpack.io/#lavahasif/Htprint)
 Add it in your root build.gradle at the end of repositories:
 
 	allprojects {
