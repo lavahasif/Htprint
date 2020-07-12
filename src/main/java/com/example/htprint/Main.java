@@ -8,7 +8,15 @@ public class Main {
     static StringBuilder builder;
 
     public static void main(String[] args) {
-        sampleKot();
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(Constants.HEAD_BILLNO_0, "100");
+        map.put(Constants.HEAD_DATE_2, "12/jul/20");
+        map.put(Constants.TIME_3, "10:20:25:PM");
+        map.put(Constants.WAITER_4, "AKBER");
+        map.put(Constants.TABLE_5, "A4");
+        map.put(Constants.IMAGE_6, "");
+        map.put(Constants.KOTNO_7, "150");
+        sampleKot(map, generateproduct());
     }
 
     public static String sampleReceipt() {
@@ -94,20 +102,20 @@ public class Main {
         return builder.toString();
     }
 
-    public static String sampleKot() {
+    public static String sampleKot(HashMap<Integer, String> map1, List<Productmodel> list) {
         builder = new StringBuilder();
         PrintDesignWebHtml printDesign = new PrintDesignWebHtml(PrinterType._48Char);
 
 
         HashMap<Integer, String> map = new HashMap<>();
-        map.put(Constants.HEAD_BILLNO_0, "100");
-        map.put(Constants.HEAD_DATE_2, "12/jul/20");
-        map.put(Constants.TIME_3, "10:20:25:PM");
-        map.put(Constants.WAITER_4, "AKBER");
-        map.put(Constants.TABLE_5, "A4");
-        map.put(Constants.IMAGE_6, "");
-        map.put(Constants.KOTNO_7, "150");
-        builder.append(new KotPrint(PrinterType._48Char, Main.generateproduct(), map).KotPrint());
+        map.put(Constants.HEAD_BILLNO_0, map1.get(Constants.HEAD_BILLNO_0));
+        map.put(Constants.HEAD_DATE_2, map1.get(Constants.HEAD_DATE_2));
+        map.put(Constants.TIME_3, map1.get(Constants.TIME_3));
+        map.put(Constants.WAITER_4, map1.get(Constants.WAITER_4));
+        map.put(Constants.TABLE_5, map1.get(Constants.TABLE_5));
+        map.put(Constants.IMAGE_6, map1.get(Constants.IMAGE_6));
+        map.put(Constants.KOTNO_7, map1.get(Constants.KOTNO_7));
+        builder.append(new KotPrint(PrinterType._48Char, list, map).KotPrint());
 
 
         System.out.println(builder.toString());
