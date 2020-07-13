@@ -420,7 +420,7 @@ public class PrintDesignWebHtml extends PrintDesign {
         items.forEach(new Consumer<Productmodel>() {
             @Override
             public void accept(Productmodel pr) {
-                headsum += HeadColumndataWeb(new String[]{pr.getName().substring(0, Math.min(pr.getName().length(), 20)), pr.getQty(), pr.getRate(), pr.getRate()}) + printNewline();
+                headsum += HeadColumndataWeb(new String[]{pr.getName().substring(0, Math.min(pr.getName().length(), 20)), pr.getQty(), pr.getRate(), pr.getAmt()}) + printNewline();
             }
         });
 
@@ -506,6 +506,7 @@ public class PrintDesignWebHtml extends PrintDesign {
     int IMAGE1 = 9;
 
     public String CompanyHead(String[] data) {
+        System.out.println(BillImage(data[IMAGE2_1]));
         return "" + BillImage(data[IMAGE1_0]) + "" +
                 BillImage(data[IMAGE2_1]) +
                 "<center><h2 style=\"margin:0px;\">" + data[COMPANY_2] + "</h2></center>\n" +
@@ -561,7 +562,7 @@ public class PrintDesignWebHtml extends PrintDesign {
     public String printNetamount(String data) {
         String value = "border-top: 4px dotted blue;";
         String s = "NetAmount:";
-        return "<p style=\"text-align:center;font-size: 20px;\">" + s + spaceMakerWeb(35 - (s.length() + data.length())) + data + "</p>";
+        return "<p style=\"text-align:center;font-size: 20px;\">" + s + spaceMakerWeb(28 - (s.length() + data.length())) + data + "</p>";
     }
 
     public String printLeft(String data) {

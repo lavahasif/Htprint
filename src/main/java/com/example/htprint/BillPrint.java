@@ -150,15 +150,13 @@
 package com.example.htprint;
 
 
-
-
 import java.util.HashMap;
 import java.util.List;
 
 public class BillPrint extends KotPrint {
     public BillPrint(PrinterType printerType, List<Productmodel> productmodelList, HashMap<Integer, String> map, HashMap<Integer, String> mapCompany) {
         super(printerType, productmodelList, map);
-        mData = new String[8];
+        mData = new String[9];
         mCompany = new String[9];
         this.productmodelList = productmodelList;
         mData[Constants.HEAD_BILLNO_0] = map.get(HEAD_BILLNO_0);
@@ -257,12 +255,12 @@ public class BillPrint extends KotPrint {
                 ".row:after {\n" +
                 "  content: \"\";\n" +
                 "height:auto"
-                +                "  display: table;\n" +
+                + "  display: table;\n" +
                 "  clear: both;\n" +
                 "}" +
                 "table th{ border-bottom: 1px solid #000;border-top:1px solid #000 }" +
 
-
+                "tr td {  font-size: samll;}" +
                 "table th{ border-bottom: 1px solid #000;border-top:1px solid #000 }" +
                 "@font-face {\n" +
                 "    font-family: MyFont;\n" +
@@ -284,12 +282,17 @@ public class BillPrint extends KotPrint {
                 CompanyHead(mCompany) +
 //                printLineHtml() +
 //                Headdescription(mData) +
+                "<br>" +
+                "<br>" +
+
                 generateHead(mData) +
+
                 "\n" + data +
                 underScoreMaker() +
 //                printWebBreak() +
                 printNetamount(mData[Constants.NETAMOUNT_8]) +
                 printkotnoBottom("304") +
+                printThankyouVisitAgain("ThankYou Visit Again") +
 //                printLineHtml() +
                 "</body>\n" +
                 "</html>";
@@ -304,13 +307,13 @@ public class BillPrint extends KotPrint {
         String table = "Table :" + data[Constants.TABLE_5];//10
 
 
-        return makeHeadGrid(Billno , data[1]) + makeHeadGrid(date , time ) + makeHeadGrid(waiter , table );
+        return makeHeadGrid(Billno, data[1]) + makeHeadGrid(date, time) + makeHeadGrid(waiter, table);
     }
 
     public String makeHeadGrid(String data, String data2) {
         return "<div class=\"row\" style=\"margin:1px;padding:1px;\">\n" +
-                "  <div class=\"column\"><h5 style=\"text-align:left;margin:0px;padding:0px;\">" + data + "<h5></div>\n" +
-                "  <div class=\"column\" ><h5 style=\"text-align:left;margin:0px;padding:0px;\">" + data2 + "<h5></div>\n" +
+                "  <div class=\"column\"><h5 style=\"text-align:left;margin:0px;padding:0px;\">" + data + "</h5></div>\n" +
+                "  <div class=\"column\" ><h5 style=\"text-align:left;margin:0px;padding:0px;\">" + data2 + "</h5></div>\n" +
                 "</div>";
 
 
