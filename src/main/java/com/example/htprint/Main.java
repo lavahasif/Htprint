@@ -35,6 +35,16 @@ public class Main {
         data_cont[Constants._b_COMPANY_GST_7] = "GSTIN32ADFDFDFDF";
         data_cont[Constants._b_COMPANY_HEAD_8] = "TAX INVOICE";
 
+        HashMap<Integer, String> mapCompany = new HashMap<>();
+        mapCompany.put(Constants._b_IMAGE1_0, data_cont[Constants._b_IMAGE1_0]);
+        mapCompany.put(Constants._b_IMAGE2_1, data_cont[Constants._b_IMAGE2_1]);
+        mapCompany.put(Constants._b_COMPANY_2, data_cont[Constants._b_COMPANY_2]);
+        mapCompany.put(Constants._b_COMPANYPLACE_3, data_cont[Constants._b_COMPANYPLACE_3]);
+        mapCompany.put(Constants._b_COMPANYROAD_4, data_cont[Constants._b_COMPANYROAD_4]);
+        mapCompany.put(Constants._b_COMPANYPLACEPIN_5, data_cont[Constants._b_COMPANYPLACEPIN_5]);
+        mapCompany.put(Constants._b_COMPANY_TEL_6, data_cont[Constants._b_COMPANY_TEL_6]);
+        mapCompany.put(Constants._b_COMPANY_GST_7, data_cont[Constants._b_COMPANY_GST_7]);
+        mapCompany.put(Constants._b_COMPANY_HEAD_8, data_cont[Constants._b_COMPANY_HEAD_8]);
 
         HashMap<Integer, String> map = new HashMap<>();
         map.put(Constants.HEAD_BILLNO_0, "100");
@@ -46,16 +56,6 @@ public class Main {
         map.put(Constants.KOTNO_7, "150");
         map.put(Constants.NETAMOUNT_8, "150");
 
-        HashMap<Integer, String> mapCompany = new HashMap<>();
-        mapCompany.put(Constants._b_IMAGE1_0, data_cont[Constants._b_IMAGE1_0]);
-        mapCompany.put(Constants._b_IMAGE2_1, data_cont[Constants._b_IMAGE2_1]);
-        mapCompany.put(Constants._b_COMPANY_2, data_cont[Constants._b_COMPANY_2]);
-        mapCompany.put(Constants._b_COMPANYPLACE_3, data_cont[Constants._b_COMPANYPLACE_3]);
-        mapCompany.put(Constants._b_COMPANYROAD_4, data_cont[Constants._b_COMPANYROAD_4]);
-        mapCompany.put(Constants._b_COMPANYPLACEPIN_5, data_cont[Constants._b_COMPANYPLACEPIN_5]);
-        mapCompany.put(Constants._b_COMPANY_TEL_6, data_cont[Constants._b_COMPANY_TEL_6]);
-        mapCompany.put(Constants._b_COMPANY_GST_7, data_cont[Constants._b_COMPANY_GST_7]);
-        mapCompany.put(Constants._b_COMPANY_HEAD_8, data_cont[Constants._b_COMPANY_HEAD_8]);
 
         return sampleBill(map, mapCompany, generateproduct());
     }
@@ -136,7 +136,7 @@ public class Main {
 //        builder.append(printDesign.printLeftWSRight("INVOICE:PMNA-IN308", "DATE:10-07-2020"));
 //        builder.append(printDesign.printNewline());
 
-        builder.append(printDesign.printHtml(printDesign.printtable(printDesign.HeadColumndataWebHead(new String[]{"ITEMS", "QTY", "RATE", "AMOUNT"}) + printDesign.generateFromdataWeb(generateproduct()))));
+        builder.append(printDesign.printHtml(printDesign.printtable(printDesign.HeadColumndataWeb(new String[]{"ITEMS", "QTY", "RATE", "AMOUNT"}) + printDesign.generateFromdataWeb(generateproduct()))));
 
 
         System.out.println(builder.toString());
