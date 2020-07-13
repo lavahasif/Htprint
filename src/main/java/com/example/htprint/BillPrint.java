@@ -150,6 +150,8 @@
 package com.example.htprint;
 
 
+
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -167,6 +169,7 @@ public class BillPrint extends KotPrint {
         mData[Constants.TABLE_5] = map.get(Constants.TABLE_5);
         mData[Constants.IMAGE_6] = map.get(Constants.IMAGE_6);
         mData[Constants.KOTNO_7] = map.get(Constants.KOTNO_7);
+        mData[Constants.NETAMOUNT_8] = map.get(Constants.NETAMOUNT_8);
 
 
         //company
@@ -253,7 +256,8 @@ public class BillPrint extends KotPrint {
                 "/* Clear floats after the columns */\n" +
                 ".row:after {\n" +
                 "  content: \"\";\n" +
-                "  display: table;\n" +
+                "height:auto"
+                +                "  display: table;\n" +
                 "  clear: both;\n" +
                 "}" +
                 "table th{ border-bottom: 1px solid #000;border-top:1px solid #000 }" +
@@ -284,7 +288,7 @@ public class BillPrint extends KotPrint {
                 "\n" + data +
                 underScoreMaker() +
 //                printWebBreak() +
-                printNetamount("1000") +
+                printNetamount(mData[Constants.NETAMOUNT_8]) +
                 printkotnoBottom("304") +
 //                printLineHtml() +
                 "</body>\n" +
@@ -292,13 +296,21 @@ public class BillPrint extends KotPrint {
     }
 
     public String generateHead(String[] data) {
-        return makeHeadGrid(data[0], data[1]) + makeHeadGrid(data[2], data[3]) + makeHeadGrid(data[4], data[5]);
+        String Billno = "BillNO:" + data[Constants.HEAD_BILLNO_0]; //10
+        String cashbil = "CashBill"; //8
+        String date = "Date:" + data[Constants.HEAD_DATE_2]; //13
+        String time = "" + data[Constants.TIME_3]; //11
+        String waiter = "W:" + data[Constants.WAITER_4]; //16
+        String table = "Table :" + data[Constants.TABLE_5];//10
+
+
+        return makeHeadGrid(Billno , data[1]) + makeHeadGrid(date , time ) + makeHeadGrid(waiter , table );
     }
 
     public String makeHeadGrid(String data, String data2) {
-        return "<div class=\"row\">\n" +
-                "  <div class=\"column\"><h4 style=\"text-align:left\">" + data + "<h4></div>\n" +
-                "  <div class=\"column\" ><h5 style=\"text-align:left\">" + data2 + "<h5></div>\n" +
+        return "<div class=\"row\" style=\"margin:1px;padding:1px;\">\n" +
+                "  <div class=\"column\"><h5 style=\"text-align:left;margin:0px;padding:0px;\">" + data + "<h5></div>\n" +
+                "  <div class=\"column\" ><h5 style=\"text-align:left;margin:0px;padding:0px;\">" + data2 + "<h5></div>\n" +
                 "</div>";
 
 
